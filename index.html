@@ -18,7 +18,7 @@
   <body onload="loadMarkers()">
 
 
-
+<!--
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -26,7 +26,8 @@
       js = d.createElement(s); js.id = id;
       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1s";
       fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));</script>-->
+
 
 
 
@@ -62,7 +63,6 @@
     <button onclick="deleteMarkers()">Izbrisi markere</button>
     <button onclick="spremiPodatke()">Spremi markere</button>
     <button onclick="showMarkers()">Prikazi sve markere</button>
-    <div id="result"></div>
 
 <!--
 <button onclick="traffic()">Temperatura</button>
@@ -79,14 +79,14 @@
             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
           </div>
 
-            <div class="modal-body">
-            <form>
+            <div class="modal-body">                                                        <!--    BOOT    --->
+             <form>
               <div class="form-group">
-                <label for="message-text" class="control-label">Marker Title:</label>
+                <label for="message-text" class="control-label">Marker Title:</label>     <!--     STRAP     -->
                 <textarea class="form-control" id="message-text"></textarea>
             </div>
               <div class="form-group">
-                <label for="message-text" class="control-label">Marker Opis:</label>
+                <label for="message-text" class="control-label">Marker Opis:</label>        <!-- MODAL -->
                 <textarea class="form-control" id="message-text"></textarea>
               </div>
             </form>
@@ -94,7 +94,7 @@
           <div class="modal-footer">
 
             <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary" type="button">Save changes</button>
+            <button class="btn btn-primary" type="button" >Save changes</button>
           </div>
         </div>
       </div>
