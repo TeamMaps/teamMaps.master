@@ -18,17 +18,45 @@ function initMap() //funkcija za mapu
     mapTypeId: 'roadmap'
 
   });
+
     map.addListener("click",function(e){
-    placeMarker(e.latLng, map)
+        latLng = e.latLng;
+
+
+        getTitle();
+        //listener za bootstrap modal kada se klinke na marker
+
     }
         //listener za stavljanje markera na mapu
   );
 
 }
 
-function placeMarker(latLng, map) // funkcija koja dodaje marker
+function getTitle()
+{
+
+          $('#myModal').modal('show');
+
+
+          $("#buttonSave").on('click', function(e){ //Button Save change na modalu
+          e.preventDefault();
+          title = $('#title-message-text').val(); // varijabla koja sadrzi naslov
+          opis = $('#message-text').val(); // var opis sa stringom
+          
+          placeMarker();
+
+      });
+
+
+
+
+}
+
+
+function placeMarker() // funkcija koja dodaje marker
 
 {
+
 
 //  var ikona = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
    var marker = new google.maps.Marker({
@@ -37,8 +65,8 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
   //  icon: ikona,
     map: map,
     draggable:true,
-    animation: google.maps.Animation.DROP
-
+    animation: google.maps.Animation.DROP,
+    content: title
   });
 
   markers.push(latLng); //pusha lat i lng markera u polje
@@ -60,6 +88,7 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
       //listener za bootstrap modal kada se klinke na marker
         });
     marker.addListener("mouseover",function(){
+      infowindow.setContent(this.content);
       infowindow.open(map,marker);
       //kad je mis na markeru otvara se infowindow
         });
@@ -71,8 +100,6 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
     });
 
 }
-
-
 
   function deleteMarkers() // funkcija brise cijeli array
   {
@@ -96,6 +123,9 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
       }
 
   }
+
+
+
   function markerPlacer(latLng,map)
   {
         //funkcija printa markere na mapu
@@ -110,6 +140,6 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
         }
       );
 
-  
+
 
   }

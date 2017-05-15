@@ -12,23 +12,28 @@
    <title>Team Maps</title>
 
    <link href="css/bootstrap.min.css" rel="stylesheet">
-
+   <script src="http://code.jquery.com/jquery-latest.js"></script>
   </head>
 
   <body onload="loadMarkers()">
 
-
-<!--
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1s";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>-->
-
-
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '224816561339578',
+          xfbml      : true,
+          version    : 'v2.9'
+        });
+        FB.AppEvents.logPageView();
+      };
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 
       <header><h1>Team Maps</h1></header>
@@ -59,18 +64,27 @@
     <div id ="black"></div>
 
     <div id="map-canvas"></div>
+
+
+
     <button onclick="hide()">Hide markers</button>
     <button onclick="deleteMarkers()">Izbrisi markere</button>
     <button onclick="spremiPodatke()">Spremi markere</button>
     <button onclick="showMarkers()">Prikazi sve markere</button>
 
-<!--
-<button onclick="traffic()">Temperatura</button>
-<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=0&layout=standard&action=like&size=small&show_faces=false&share=true&height=35&appId=1543179329025437" width="0" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-
-    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+<div
+class="fb-like"
+data-share="flase"
+data-width="450"
+data-show-faces="true">
+</div>
+  <!--          <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=78&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId" width="78" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></button>
+              <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&mobile_iframe=true&width=105&height=28&appId" width="105" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
 -->
+
+
+
     <div tabindex="-1" class="modal fade" id="myModal" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -83,18 +97,31 @@
              <form>
               <div class="form-group">
                 <label for="message-text" class="control-label">Marker Title:</label>     <!--     STRAP     -->
-                <textarea class="form-control" id="message-text"></textarea>
+                <textarea class="form-control" id="title-message-text"></textarea>
             </div>
               <div class="form-group">
                 <label for="message-text" class="control-label">Marker Opis:</label>        <!-- MODAL -->
                 <textarea class="form-control" id="message-text"></textarea>
               </div>
+              <div
+              class="fb-like"
+              data-share="true"
+              data-width="450"
+              data-show-faces="true">
+              </div>
+
             </form>
 
           <div class="modal-footer">
 
             <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary" type="button" >Save changes</button>
+            <button class="btn btn-primary" id="buttonSave" data-dismiss="modal" >Save changes</button>
+
+
+        <p>
+            title is <span id="result"></span>
+            opis je <span id="opis"></span>
+        </p>
           </div>
         </div>
       </div>
