@@ -7,7 +7,6 @@ else markers = JSON.parse(localStorage.getItem("markers"));
   pretrazuje local storage za oznaku markers i taj value parsa u ovaj var,
    akmo je nema stvara prazni globalni array markers */
 
-
 function initMap() //funkcija za mapu
 {
 
@@ -57,7 +56,7 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
 
     marker.addListener("click",function(){
 
-      $('#myModal').modal('show')
+      $('#myModal').modal('show');
       //listener za bootstrap modal kada se klinke na marker
         });
     marker.addListener("mouseover",function(){
@@ -96,6 +95,18 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
       }
 
   }
+
+
+  $("#buttonSave").on('click', function(e){ //Button Save change na modalu
+          e.preventDefault();
+        var title = $('#title-message-text').val(); // varijabla koja sadrzi naslov
+        var opis = $('#message-text').val(); // var opis sa stringom
+
+          $('#result').text( title ); // u span sa id resultom stavi title
+          $('#opis').text( opis ); // u span sa opisom stavi string
+
+      });
+
   function markerPlacer(latLng,map)
   {
         //funkcija printa markere na mapu
@@ -109,6 +120,7 @@ function placeMarker(latLng, map) // funkcija koja dodaje marker
 
         }
       );
-          /// fali facebok button i node.js s
+
+
 
   }
