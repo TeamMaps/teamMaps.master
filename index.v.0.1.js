@@ -1,4 +1,5 @@
 var map;
+
 //var markers = [];
 
 if(localStorage.markers === undefined){ markers = []; }
@@ -20,87 +21,103 @@ function initMap() //funkcija za mapu
   });
 
     map.addListener("click",function(e){
-        latLng = e.latLng;
+         latLng = e.latLng;
 
 
-        getTitle();
+        popOut();
         //listener za bootstrap modal kada se klinke na marker
 
     }
-        //listener za stavljanje markera na mapu
   );
 
 }
 
-function getTitle()
+
+
+function publicPrivate(clicked_id)
 {
 
-          $('#myModal').modal('show');
-
-
-          $("#buttonSave").on('click', function(e){ //Button Save change na modalu
-          e.preventDefault();
-          title = $('#title-message-text').val(); // varijabla koja sadrzi naslov
-          opis = $('#message-text').val(); // var opis sa stringom
-          
-          placeMarker();
-
-      });
-
-
+    if(clicked_id == "private"){
+      alert("Your just set your marker to private mode");
+    }
+    else if(clicked_id == "public"){
+      alert("Your mareker is public");
+    }
+    else if (clicked_id == "3") {
+      alert ("You dont have any messages");
+    }
 
 
 }
 
+  function popOut(){
+    $('#myModal').modal('show');
+//funkcija za bootstrap modal i  stavljanje markera na mapu
+  }
 
-function placeMarker() // funkcija koja dodaje marker
+
+  $("#buttonSave").on('click', function()
+  { //Button Save change na modalu
+
+        var naslov = $('#title-message-text').val(); // varijabla koja sadrzi naslov
+        var opis = $('#message-text').val(); // var opis sa stringom
+        placeMarker(naslov,opis);
+    });
+
+
+
+
+function placeMarker(title,desc) // funkcija koja dodaje marker
 
 {
+  infowindow = new google.maps.InfoWindow({
 
 
+      }
+      );
 //  var ikona = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-   var marker = new google.maps.Marker({
 
-    position: latLng,
-  //  icon: ikona,
-    map: map,
-    draggable:true,
-    animation: google.maps.Animation.DROP,
-    content: title
+        var  marker = new google.maps.Marker({
+
+          position: latLng,
+          //  icon: ikona,
+          map: map,
+          draggable:true,
+          animation: google.maps.Animation.DROP,
+          content: title
+          });
+
+  markers.push(latLng,title,desc); //pusha lat i lng markera u polje
+
+ marker.addListener("click",function(){
+
+      $('#myModal').modal('show');
+    //listener za bootstrap modal kada se klinke na marker
   });
-
-  markers.push(latLng); //pusha lat i lng markera u polje
-
-
   var infowindow;
 
   //var content =  '<img src="rijeka.jpg" alt="Porcelain Factory of Vista Alegre" height="200" width="450">';
 
     infowindow = new google.maps.InfoWindow({
 
-      //content:"
-    }
-    );
 
-    marker.addListener("click",function(){
+        }
+        );
 
-      $('#myModal').modal('show');
-      //listener za bootstrap modal kada se klinke na marker
-        });
-    marker.addListener("mouseover",function(){
-      infowindow.setContent(this.content);
-      infowindow.open(map,marker);
-      //kad je mis na markeru otvara se infowindow
+        marker.addListener("mouseover",function(){
+          infowindow.setContent(this.content);
+          infowindow.open(map,marker);
         });
 
-    marker.addListener("mouseout",function()
-    {
-      infowindow.close();
-      //mouse out infowindow se zatvara
-    });
+
+       marker.addListener("mouseout",function()
+       {
+         infowindow.close();
+         //mouse out infowindow se zatvara
+       });
 
 }
-
+//kad je mis na markeru otvara se infowindow
   function deleteMarkers() // funkcija brise cijeli array
   {
     //console.log(markers);

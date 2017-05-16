@@ -13,6 +13,7 @@
 
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <script src="http://code.jquery.com/jquery-latest.js"></script>
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   </head>
 
   <body onload="loadMarkers()">
@@ -78,7 +79,7 @@ data-share="flase"
 data-width="450"
 data-show-faces="true">
 </div>
-  <!--          <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=78&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId" width="78" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></button>
+ <!--          <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=78&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId" width="78" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></button>
               <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&mobile_iframe=true&width=105&height=28&appId" width="105" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
 -->
@@ -113,15 +114,16 @@ data-show-faces="true">
             </form>
 
           <div class="modal-footer">
-
+            <div id="private"   onClick="publicPrivate(this.id)">private</div>
+            <div id="public" onClick="publicPrivate(this.id)">public</div>
+            <div id="3" onClick="publicPrivate(this.id)">message</div>
             <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary" id="buttonSave" data-dismiss="modal" >Save changes</button>
+            <button class="btn btn-primary" id="buttonSave"
+          
+            data-dismiss="modal" >Save changes</button>
 
 
-        <p>
-            title is <span id="result"></span>
-            opis je <span id="opis"></span>
-        </p>
+
           </div>
         </div>
       </div>
