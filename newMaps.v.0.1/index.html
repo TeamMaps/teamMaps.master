@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+   <link href="style.css" rel="stylesheet">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <title>Team Maps</title>
+
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://code.jquery.com/jquery-latest.js"></script>
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+
+  <body onload="loadMarkers()">
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '224816561339578',
+          xfbml      : true,
+          version    : 'v2.9'
+        });
+        FB.AppEvents.logPageView();
+      };
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+      <header><h1>Team Maps</h1></header>
+
+    <nav>
+
+        <a href="#1" class="navel">Home</a>
+
+        <a href="#2" class="navel">Filter</a>
+
+        <a href="#3" class="navel">Marker</a>
+
+        <a href="#4" class="navel">Intro</a>
+
+        <a href="#5" class="navel">Tim Tim maps</a>
+
+    </nav>
+    <div id="ayy">
+
+    <div id="markeri"></div>
+
+    <div id="map"></div>
+
+    <div id="feed"></div>
+
+      </div>
+
+    <div id ="black"></div>
+
+    <div id="map-canvas"></div>
+
+
+
+    <button onclick="hide()">Hide markers</button>
+    <button onclick="deleteMarkers()">Izbrisi markere</button>
+    <button onclick="spremiPodatke()">Spremi markere</button>
+    <button onclick="showMarkers()">Prikazi sve markere</button>
+
+<div
+class="fb-like"
+data-share="flase"
+data-width="450"
+data-show-faces="true">
+</div>
+ <!--          <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=78&layout=button_count&action=like&size=small&show_faces=true&share=false&height=21&appId" width="78" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></button>
+              <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&mobile_iframe=true&width=105&height=28&appId" width="105" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+
+-->
+
+
+
+    <div tabindex="-1" class="modal fade" id="myModal" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+
+            <div class="modal-body">                                                        <!--    BOOT    --->
+             <form>
+              <div class="form-group">
+                <label for="message-text" class="control-label">Marker Title:</label>     <!--     STRAP     -->
+                <textarea class="form-control" id="title-message-text"></textarea>
+            </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label">Marker Opis:</label>        <!-- MODAL -->
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div
+              class="fb-like"
+              data-share="true"
+              data-width="450"
+              data-show-faces="true">
+              </div>
+
+            </form>
+
+          <div class="modal-footer">
+            <div id="private"   onClick="publicPrivate(this.id)">private</div>
+            <div id="public" onClick="publicPrivate(this.id)">public</div>
+            <div id="3" onClick="publicPrivate(this.id)">message</div>
+            <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" id="buttonSave"
+          
+            data-dismiss="modal" >Save changes</button>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+          <script src="index.v.0.1.js"></script>
+
+
+          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjP0mIv4XxH3DQo42HExq-IKmY0gjjyq4&callback=initMap"> </script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>
